@@ -1,14 +1,7 @@
-```python
 '''
-Step 0 - Installing the Tor Browser
-Make sure you have Tor Browser installed and running. You can download it here: https://www.torproject.org/download/
-
-NOTE: On Windows, Tor Browser typically listens on port 9150 instead of 9050. Be sure to adjust the proxy config accordingly if you're using Windows.
-
+Install the Tor Browser
 ---
-
-Step 1 - Objective
-In this exercise, we’ll write a script that checks whether known Tor hidden services (onion sites) are currently online.
+A script that checks whether known Tor hidden services (onion sites) are currently online.
 
 We’ll:
 - Load onion URLs from a file (onions.txt)
@@ -28,7 +21,6 @@ output_file = 'liveness_report.json'
 
 
 '''
-Step 2 - Tor Proxy Setup
 To access onion services, we need to route our traffic through the Tor SOCKS5 proxy.
 '''
 
@@ -45,7 +37,6 @@ def get_tor_session():
 
 
 '''
-Step 3 - Reading Onion Links
 We’ll read onion links from a text file, one URL per line.
 We’ll skip empty lines or comments (lines starting with #).
 '''
@@ -64,7 +55,6 @@ def normalize_onion(url):
     return url
 
 '''
-Step 4 - Liveness Check
 For each onion URL, we’ll send a GET request and record whether it responds or times out.
 '''
 
@@ -85,7 +75,6 @@ def check_liveness(session, onion):
         return f'EXCEPTION: {str(e)}'
 
 '''
-Step 5 - Main Logic Loop
 We’ll initialize our session, load the onions, loop through them with short delays, and log results.
 '''
 
@@ -109,7 +98,6 @@ def main():
 
 
 '''
-Step 6 - Writing Results
 We’ll store each run under a timestamp key in the JSON file.
 This allows you to track changes in site availability over time.
 '''
@@ -131,10 +119,6 @@ def write_output(new_results):
     print(f"Full historical log saved to {output_file}")
 
 
-'''
-Step 7 - Run the Script
-'''
 
 if __name__ == '__main__':
     main()
-```
